@@ -11,6 +11,7 @@ import {
   StyleSheet,
   useWindowDimensions,
   ViewStyle,
+  Platform
 } from 'react-native';
 import Animated, {
   useAnimatedStyle,
@@ -414,7 +415,7 @@ const ResizableImage = React.memo(
 
         scale.value = nextScale;
 
-        setAdjustedFocal({ focalX, focalY });
+        if(Platform.OS === 'ios') setAdjustedFocal({ focalX, focalY });
 
         translation.x.value =
           adjustedFocal.x.value +
